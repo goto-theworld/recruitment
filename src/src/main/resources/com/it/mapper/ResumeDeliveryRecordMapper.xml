@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.ResumeDeliveryRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.ResumeDeliveryRecord" >
+    
+    <id column="resume_delivery_record_id" property="resumeDeliveryRecordId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="resume_id" property="resumeId" jdbcType="INTEGER" />
+    <result column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+    <result column="delivery_status" property="deliveryStatus" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    resume_delivery_record_id, cust_id, resume_id, job_id, delivery_time, delivery_status, 
+    other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.ResumeDeliveryRecordExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resume_delivery_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from resume_delivery_record
+    where resume_delivery_record_id = #{resumeDeliveryRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from resume_delivery_record
+    where resume_delivery_record_id = #{resumeDeliveryRecordId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.ResumeDeliveryRecordExample" >
+     
+    delete from resume_delivery_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.ResumeDeliveryRecord" >
+     
+    insert into resume_delivery_record (resume_delivery_record_id, cust_id, resume_id, 
+      job_id, delivery_time, delivery_status, 
+      other1, other2)
+    values (#{resumeDeliveryRecordId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{resumeId,jdbcType=INTEGER}, 
+      #{jobId,jdbcType=INTEGER}, #{deliveryTime,jdbcType=TIMESTAMP}, #{deliveryStatus,jdbcType=INTEGER}, 
+      #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.ResumeDeliveryRecord" >
+     
+    insert into resume_delivery_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resumeDeliveryRecordId != null" >
+        resume_delivery_record_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="resumeId != null" >
+        resume_id,
+      </if>
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time,
+      </if>
+      <if test="deliveryStatus != null" >
+        delivery_status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resumeDeliveryRecordId != null" >
+        #{resumeDeliveryRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryTime != null" >
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryStatus != null" >
+        #{deliveryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.ResumeDeliveryRecordExample" resultType="java.lang.Integer" >
+     
+    select count(*) from resume_delivery_record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update resume_delivery_record
+    <set >
+      <if test="record.resumeDeliveryRecordId != null" >
+        resume_delivery_record_id = #{record.resumeDeliveryRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="record.custId != null" >
+        cust_id = #{record.custId,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeId != null" >
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobId != null" >
+        job_id = #{record.jobId,jdbcType=INTEGER},
+      </if>
+      <if test="record.deliveryTime != null" >
+        delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deliveryStatus != null" >
+        delivery_status = #{record.deliveryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update resume_delivery_record
+    set resume_delivery_record_id = #{record.resumeDeliveryRecordId,jdbcType=INTEGER},
+      cust_id = #{record.custId,jdbcType=INTEGER},
+      resume_id = #{record.resumeId,jdbcType=INTEGER},
+      job_id = #{record.jobId,jdbcType=INTEGER},
+      delivery_time = #{record.deliveryTime,jdbcType=TIMESTAMP},
+      delivery_status = #{record.deliveryStatus,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.ResumeDeliveryRecord" >
+     
+    update resume_delivery_record
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeId != null" >
+        resume_id = #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="jobId != null" >
+        job_id = #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryStatus != null" >
+        delivery_status = #{deliveryStatus,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resume_delivery_record_id = #{resumeDeliveryRecordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.ResumeDeliveryRecord" >
+     
+    update resume_delivery_record
+    set cust_id = #{custId,jdbcType=INTEGER},
+      resume_id = #{resumeId,jdbcType=INTEGER},
+      job_id = #{jobId,jdbcType=INTEGER},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      delivery_status = #{deliveryStatus,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where resume_delivery_record_id = #{resumeDeliveryRecordId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,133 @@
+/*personalCenter*/
+body, p, ul, form {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+select {
+    outline-color: #2fa0d4;
+    width: 100px;
+    height: 30px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 50px;
+    border: 1px solid #eee;
+}
+
+table thead {
+    background-color: #eee;
+}
+
+.content {
+    width: 1000px;
+    margin: 10px auto;
+    position: relative;
+    /*background: #69BC41;*/
+}
+
+.directory {
+
+}
+
+.more_1 {
+    display: block;
+    width: 150px;
+    text-align: center;
+    background: #fbfafb;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.directory .choose {
+    background: #2fa0d4;
+    color: #fff;
+}
+
+/*======================================================*/
+.display {
+    display: block !important;
+}
+
+/*======================================================*/
+.absContent {
+    width: 830px;
+    display: block;
+    /*display: none;*/
+    /*background: antiquewhite;*/
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.absContent .header {
+    /*overflow: hidden;*/
+    border-bottom: 2px solid #eee;
+    box-sizing: border-box;
+}
+
+.absContent .header:after {
+    display: block;
+    content: "";
+    clear: both;
+}
+
+.leftLabel {
+    float: left;
+    margin-left: 30px;
+}
+
+.leftLabel,
+.rightLabel {
+    display: flex;
+    justify-content: start;
+    position: relative;
+    bottom: -2px;
+}
+
+.leftLabel li {
+    cursor: default;
+    padding: 10px;
+    border-bottom: 2px solid #2fa0d4;
+}
+
+.describe {
+    padding: 10px;
+    font-size: 13px;
+}
+
+.rightLabel {
+    float: right;
+    margin-right: 20px;
+    line-height: 0.9em;
+}
+
+.rightLabel li {
+    cursor: default;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.labelForMyself {
+    text-align: left;
+    padding-left: 20px;
+}
+
+
+
+

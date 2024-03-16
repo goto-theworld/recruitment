@@ -1,0 +1,94 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#subjectDiv{
+    width: 1002px;
+    margin: 0 auto;
+}
+#companyInfo{
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.31);
+    padding: 17px 0;
+}
+#spanDiv{
+    margin-top:5px;
+}
+a{
+    text-decoration: none;
+}
+.spans{
+    margin-left: 17px ;
+}
+#companySituation{
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 28px;
+}
+.listHead{
+    height: 20px;
+    line-height: 20px;
+    font-weight: bold;
+    text-indent: 0;
+    margin-top: 15px;
+    border-left: 4px solid #2fa0d4;
+}
+#companyJobInfo{
+    position: relative;
+    margin-top: 20px;
+    z-index: 2;
+}
+#jobList{
+    position: relative;
+    background-color: #fff;
+    z-index: 1;
+}
+.job{
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    overflow: hidden;
+    border-bottom: 1px dotted #e8e8e8;
+    border-top: 1px dotted #e8e8e8;
+    margin-top: 5px;
+}
+.j1{
+    position: relative;
+    width: 347px;
+    float: left;
+    padding: 0 10px;
+}
+.j2{
+    display: block;
+    width: 255px;
+    color: #666;
+    float: left;
+    padding: 0 10px;
+}
+.j3{
+    display: block;
+    width: 100px;
+    color: #999;
+    text-align: center;
+    float: left;
+    padding: 0 10px;
+}
+.j4{
+    display: block;
+    width: 130px;
+    font-size: 16px;
+    color: #2fa0d4;
+    text-align: center;
+    float: left;
+    padding: 0 10px;
+}
+.j5{
+    display: block;
+    width: 200px;
+    color: #999;
+    text-align: center;
+    float: left;
+    padding: 0 10px;
+    position: relative;
+    left: 90px;
+}

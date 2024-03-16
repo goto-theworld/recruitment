@@ -1,0 +1,193 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+.pagination > li > a,
+.pagination > li > span {
+    color: #2fa0d4;
+    text-decoration: none;
+}
+
+a:hover,
+.pagination > li > a:hover,
+.pagination > li > span:hover {
+    color: #2fa0d4;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.pagination > .green > a,
+.pagination > .green > a:focus,
+.pagination > .green > a:hover,
+.pagination > .green > span,
+.pagination > .green > span:focus,
+.pagination > .green > span:hover,
+.green,
+.green:focus,
+.green:hover {
+    color: #fff;
+    background-color: #2fa0d4 !important;
+    border-color: #2fa0d4 !important;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+}
+
+.contentElement {
+    width: 1000px;
+    margin: auto;
+}
+
+/*==================搜索框==================*/
+#search_div {
+    width: 900px;
+    margin: 20px auto;
+}
+
+#search_input {
+    width: 100%;
+    margin: auto;
+    height: 50px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+}
+
+#searchContent {
+    height: 100%;
+    outline: none;
+    border: none;
+    width: 750px;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+#searchContent:hover {
+    border: 1px solid #2fa0d4;
+}
+
+#searchBtn {
+    float: right;
+    width: 150px;
+    height: 100%;
+    text-align: center;
+    line-height: 100%;
+    font-size: 18px;
+    border: none;
+    color: white;
+    background: #2fa0d4;
+}
+
+/*==================搜索 热门==================*/
+#search_hot {
+    width: 100%;
+    padding: 9px 0 26px 0;
+}
+
+#search_hot a {
+    margin-left: 22px;
+}
+
+#search_hot span {
+    color: #9fa3b0;
+}
+
+
+#selectRows > li {
+    border: 1px solid #eee;
+}
+
+#selectRows .selectCols {
+    display: flex;
+    justify-content: start;
+    text-align: left;
+}
+
+.selectCols > li:first-child {
+    margin: 10px 5px 10px 10px;
+    width: 70px;
+}
+
+.selectCols > li {
+    margin: 10px 20px;
+    cursor: default;
+}
+
+.choose {
+    color: #2fa0d4;
+}
+
+.btnBox {
+    margin-top: 20px;
+    line-height: 50px;
+    padding: 5px 0;
+    background-color: #fafafa;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btnBox > div,
+.btnBox > label {
+    margin: 3px 6px;
+    padding: 3px 6px;
+    line-height: 30px;
+}
+
+.btn {
+    background-color: #fff;
+}
+
+.contentElement table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.contentElement table tr {
+
+}
+
+.contentElement table td {
+    line-height: 50px;
+}
+
+.contentElement table thead tr,
+.contentElement table tbody tr:nth-child(2n) {
+    background-color: #eee;
+}
+
+.contentElement table tr td:nth-child(1) {
+    width: 50px;
+}
+
+.contentElement table tr td:nth-child(2) {
+    width: 250px;
+}
+
+.contentElement table tr td:nth-child(3) {
+    width: 250px;
+}
+
+.contentElement table tr td:nth-child(4) {
+    width: 200px;
+}
+
+.contentElement table tr td:nth-child(5) {
+    width: 150px;
+}
+
+.contentElement table tr td:nth-child(6) {
+    width: 100px;
+}
+
+.center {
+    text-align: center;
+}
+

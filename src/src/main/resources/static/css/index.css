@@ -1,0 +1,340 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #2fa0d4;
+}
+
+ul {
+    list-style: none;
+}
+
+#container {
+    width: 1000px;
+    margin: 20px auto;
+}
+
+/*==================搜索框==================*/
+#search_div {
+    width: 70%;
+    margin: auto;
+}
+
+#search_input {
+    width: 100%;
+    margin: auto;
+    height: 50px;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.13);
+    overflow: hidden;
+}
+
+#searchContent {
+    height: 100%;
+    outline: none;
+    border: none;
+    width: 600px;
+    font-size: 15px;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+
+#searchContent:hover {
+    border: 1px solid #2fa0d4;
+}
+
+#searchBtn {
+    float: right;
+    width: 100px;
+    height: 100%;
+    text-align: center;
+    line-height: 100%;
+    font-size: 18px;
+    border: none;
+    color: white;
+    background: #2fa0d4;
+}
+
+/*==================搜索 热门==================*/
+#search_hot {
+    width: 100%;
+    padding: 9px 0 26px 0;
+}
+
+#search_hot a {
+    margin-left: 22px;
+}
+
+#search_hot span {
+    color: #9fa3b0;
+}
+
+/*==================职位列表==================*/
+#index_vocationList {
+    width: 100%;
+    margin-top: 20px;
+    position: relative;
+}
+
+#index_showList {
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.listrow > div:hover,
+.listrow > div:hover + ul,
+.listrow > .index_hideList:hover {
+    background-color: #fafafa;
+    border: 1px solid #fafafa;
+
+}
+
+.listrow > .index_hideList:hover,
+.listrow > div:hover + ul {
+    display: block;
+}
+
+.listrow > div {
+    height: 50px;
+    width: 500px;
+    line-height: 50px;
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+
+.listrow strong {
+    font-size: 16px;
+    color: #61687c;
+    padding-left: 10px;
+}
+
+.listrow a {
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.listrow > div > a:last-child {
+    float: right;
+    margin-top: 16px;
+    padding-right: 20px;
+}
+
+#listImg {
+    position: absolute;
+    z-index: -1;
+    right: 1px;
+    top: 1px;
+    width: 500px;
+    height: 99%;
+}
+
+/*调整详情框位置*/
+.listrow .index_hideList {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 500px;
+    height: 100%;
+    color: black;
+    display: none;
+}
+
+#index_showList .listrow .index_hideList a:hover {
+    color: #2fa0d4;
+}
+
+/*==================职位列表==================*/
+
+
+/*职位列表*/
+#Position_list {
+    width: 100%;
+    margin: 10px auto;
+}
+
+/*=====查看更多==========================================*/
+#Position_list .btn {
+    margin: 5px auto 20px;
+    display: block;
+    width: 300px;
+    font-size: 15px;
+    text-align: center;
+    height: 32px;
+    line-height: 32px;
+    background-color: #2fa0d4;
+    color: #fff;
+}
+
+.morePosition .btn:hover {
+    background: #2fa0d4;
+    color: white;
+    transition: 0.5s;
+}
+
+/*=====导航部分==========================================*/
+.label_info ul {
+    list-style: none;
+    display: flex;
+    justify-content: start;
+    flex-wrap: nowrap;
+    align-items: center;
+    color: #8d92a1;
+}
+
+.label_info ul li {
+    font-size: 16px;
+    line-height: 50px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.choose {
+    color: #2fa0d4;
+}
+
+/*=====具体内容==========================================*/
+.js_content {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.js_content > li {
+    width: 33.33%;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.js_content > li > div:hover {
+    color: #2fa0d4;
+    background-color: #fbfafb;
+}
+
+.js_content > li > div {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.js_content > li > div > a {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/*=====行业分类详情==========================================*/
+.jobname:hover {
+    color: #2fa0d4;
+}
+
+.jobname span {
+    display: inline-block;
+    margin-left: 30px;
+    color: #fc6c38;
+}
+
+.vline {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    vertical-align: middle;
+    background: #e0e0e0;
+    margin: 0 10px;
+}
+
+.job_text {
+    margin-top: 10px;
+    color: #61687c;
+}
+
+.user-info {
+    padding: 0 10px;
+}
+
+.user-info img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin-left: -5px;
+    margin-top: -5px;
+}
+
+.user-text {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #8d92a1;
+}
+
+
+/*=====热门公司详情==========================================*/
+.Specific_text {
+    padding: 0 10px;
+}
+
+.company-info {
+    /*border-bottom: dashed 1px #ededed;*/
+}
+
+.company-info img {
+    height: 55px;
+    width: 55px;
+    float: left;
+    border-radius: 10px;
+    border: solid 1px #f2f5fa;
+}
+
+.company-info .company-text {
+    margin-left: 65px;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.company-info .company-text h4 {
+    height: 25px;
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0;
+}
+
+.company-info .company-text p {
+    height: 40px;
+    line-height: 41px;
+    color: #898e9d;
+    font-size: 12px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.about-info {
+    color: #8d92a1;
+    font-size: 14px;
+}
+
+.text-green {
+    color: #2fa0d4;
+}
+
+.li_font_color {
+    color: #2fa0d4;
+}
+
+.company-box h3 span .selected {
+    color: #2fa0d4;
+}
+

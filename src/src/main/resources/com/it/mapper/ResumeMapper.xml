@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.ResumeMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.Resume" >
+    
+    <id column="resume_id" property="resumeId" jdbcType="INTEGER" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="resume_name" property="resumeName" jdbcType="VARCHAR" />
+    <result column="resume_create_time" property="resumeCreateTime" jdbcType="TIMESTAMP" />
+    <result column="resume_update_time" property="resumeUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="resume_profile" property="resumeProfile" jdbcType="VARCHAR" />
+    <result column="resume_birth" property="resumeBirth" jdbcType="DATE" />
+    <result column="resume_telno" property="resumeTelno" jdbcType="BIGINT" />
+    <result column="resume_email" property="resumeEmail" jdbcType="VARCHAR" />
+    <result column="resume_gender" property="resumeGender" jdbcType="CHAR" />
+    <result column="resume_leaving__working" property="resumeLeavingWorking" jdbcType="VARCHAR" />
+    <result column="resume_live_city" property="resumeLiveCity" jdbcType="VARCHAR" />
+    <result column="resume_personid" property="resumePersonid" jdbcType="VARCHAR" />
+    <result column="resume_income" property="resumeIncome" jdbcType="DECIMAL" />
+    <result column="resume_full_part_time" property="resumeFullPartTime" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    resume_id, cust_id, resume_name, resume_create_time, resume_update_time, resume_profile, 
+    resume_birth, resume_telno, resume_email, resume_gender, resume_leaving__working, 
+    resume_live_city, resume_personid, resume_income, resume_full_part_time, status, 
+    other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.ResumeExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from resume
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from resume
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.ResumeExample" >
+     
+    delete from resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.Resume" >
+     
+    insert into resume (resume_id, cust_id, resume_name, 
+      resume_create_time, resume_update_time, 
+      resume_profile, resume_birth, resume_telno, 
+      resume_email, resume_gender, resume_leaving__working, 
+      resume_live_city, resume_personid, resume_income, 
+      resume_full_part_time, status, other1, 
+      other2)
+    values (#{resumeId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{resumeName,jdbcType=VARCHAR}, 
+      #{resumeCreateTime,jdbcType=TIMESTAMP}, #{resumeUpdateTime,jdbcType=TIMESTAMP}, 
+      #{resumeProfile,jdbcType=VARCHAR}, #{resumeBirth,jdbcType=DATE}, #{resumeTelno,jdbcType=BIGINT}, 
+      #{resumeEmail,jdbcType=VARCHAR}, #{resumeGender,jdbcType=CHAR}, #{resumeLeavingWorking,jdbcType=VARCHAR}, 
+      #{resumeLiveCity,jdbcType=VARCHAR}, #{resumePersonid,jdbcType=VARCHAR}, #{resumeIncome,jdbcType=DECIMAL}, 
+      #{resumeFullPartTime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{other1,jdbcType=VARCHAR}, 
+      #{other2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.Resume" >
+     
+    insert into resume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resumeId != null" >
+        resume_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="resumeName != null" >
+        resume_name,
+      </if>
+      <if test="resumeCreateTime != null" >
+        resume_create_time,
+      </if>
+      <if test="resumeUpdateTime != null" >
+        resume_update_time,
+      </if>
+      <if test="resumeProfile != null" >
+        resume_profile,
+      </if>
+      <if test="resumeBirth != null" >
+        resume_birth,
+      </if>
+      <if test="resumeTelno != null" >
+        resume_telno,
+      </if>
+      <if test="resumeEmail != null" >
+        resume_email,
+      </if>
+      <if test="resumeGender != null" >
+        resume_gender,
+      </if>
+      <if test="resumeLeavingWorking != null" >
+        resume_leaving__working,
+      </if>
+      <if test="resumeLiveCity != null" >
+        resume_live_city,
+      </if>
+      <if test="resumePersonid != null" >
+        resume_personid,
+      </if>
+      <if test="resumeIncome != null" >
+        resume_income,
+      </if>
+      <if test="resumeFullPartTime != null" >
+        resume_full_part_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeName != null" >
+        #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeCreateTime != null" >
+        #{resumeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumeUpdateTime != null" >
+        #{resumeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumeProfile != null" >
+        #{resumeProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeBirth != null" >
+        #{resumeBirth,jdbcType=DATE},
+      </if>
+      <if test="resumeTelno != null" >
+        #{resumeTelno,jdbcType=BIGINT},
+      </if>
+      <if test="resumeEmail != null" >
+        #{resumeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeGender != null" >
+        #{resumeGender,jdbcType=CHAR},
+      </if>
+      <if test="resumeLeavingWorking != null" >
+        #{resumeLeavingWorking,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeLiveCity != null" >
+        #{resumeLiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="resumePersonid != null" >
+        #{resumePersonid,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeIncome != null" >
+        #{resumeIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="resumeFullPartTime != null" >
+        #{resumeFullPartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.ResumeExample" resultType="java.lang.Integer" >
+     
+    select count(*) from resume
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update resume
+    <set >
+      <if test="record.resumeId != null" >
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.custId != null" >
+        cust_id = #{record.custId,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeName != null" >
+        resume_name = #{record.resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumeCreateTime != null" >
+        resume_create_time = #{record.resumeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.resumeUpdateTime != null" >
+        resume_update_time = #{record.resumeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.resumeProfile != null" >
+        resume_profile = #{record.resumeProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumeBirth != null" >
+        resume_birth = #{record.resumeBirth,jdbcType=DATE},
+      </if>
+      <if test="record.resumeTelno != null" >
+        resume_telno = #{record.resumeTelno,jdbcType=BIGINT},
+      </if>
+      <if test="record.resumeEmail != null" >
+        resume_email = #{record.resumeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumeGender != null" >
+        resume_gender = #{record.resumeGender,jdbcType=CHAR},
+      </if>
+      <if test="record.resumeLeavingWorking != null" >
+        resume_leaving__working = #{record.resumeLeavingWorking,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumeLiveCity != null" >
+        resume_live_city = #{record.resumeLiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumePersonid != null" >
+        resume_personid = #{record.resumePersonid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resumeIncome != null" >
+        resume_income = #{record.resumeIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="record.resumeFullPartTime != null" >
+        resume_full_part_time = #{record.resumeFullPartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update resume
+    set resume_id = #{record.resumeId,jdbcType=INTEGER},
+      cust_id = #{record.custId,jdbcType=INTEGER},
+      resume_name = #{record.resumeName,jdbcType=VARCHAR},
+      resume_create_time = #{record.resumeCreateTime,jdbcType=TIMESTAMP},
+      resume_update_time = #{record.resumeUpdateTime,jdbcType=TIMESTAMP},
+      resume_profile = #{record.resumeProfile,jdbcType=VARCHAR},
+      resume_birth = #{record.resumeBirth,jdbcType=DATE},
+      resume_telno = #{record.resumeTelno,jdbcType=BIGINT},
+      resume_email = #{record.resumeEmail,jdbcType=VARCHAR},
+      resume_gender = #{record.resumeGender,jdbcType=CHAR},
+      resume_leaving__working = #{record.resumeLeavingWorking,jdbcType=VARCHAR},
+      resume_live_city = #{record.resumeLiveCity,jdbcType=VARCHAR},
+      resume_personid = #{record.resumePersonid,jdbcType=VARCHAR},
+      resume_income = #{record.resumeIncome,jdbcType=DECIMAL},
+      resume_full_part_time = #{record.resumeFullPartTime,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.Resume" >
+     
+    update resume
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeName != null" >
+        resume_name = #{resumeName,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeCreateTime != null" >
+        resume_create_time = #{resumeCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumeUpdateTime != null" >
+        resume_update_time = #{resumeUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="resumeProfile != null" >
+        resume_profile = #{resumeProfile,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeBirth != null" >
+        resume_birth = #{resumeBirth,jdbcType=DATE},
+      </if>
+      <if test="resumeTelno != null" >
+        resume_telno = #{resumeTelno,jdbcType=BIGINT},
+      </if>
+      <if test="resumeEmail != null" >
+        resume_email = #{resumeEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeGender != null" >
+        resume_gender = #{resumeGender,jdbcType=CHAR},
+      </if>
+      <if test="resumeLeavingWorking != null" >
+        resume_leaving__working = #{resumeLeavingWorking,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeLiveCity != null" >
+        resume_live_city = #{resumeLiveCity,jdbcType=VARCHAR},
+      </if>
+      <if test="resumePersonid != null" >
+        resume_personid = #{resumePersonid,jdbcType=VARCHAR},
+      </if>
+      <if test="resumeIncome != null" >
+        resume_income = #{resumeIncome,jdbcType=DECIMAL},
+      </if>
+      <if test="resumeFullPartTime != null" >
+        resume_full_part_time = #{resumeFullPartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.Resume" >
+     
+    update resume
+    set cust_id = #{custId,jdbcType=INTEGER},
+      resume_name = #{resumeName,jdbcType=VARCHAR},
+      resume_create_time = #{resumeCreateTime,jdbcType=TIMESTAMP},
+      resume_update_time = #{resumeUpdateTime,jdbcType=TIMESTAMP},
+      resume_profile = #{resumeProfile,jdbcType=VARCHAR},
+      resume_birth = #{resumeBirth,jdbcType=DATE},
+      resume_telno = #{resumeTelno,jdbcType=BIGINT},
+      resume_email = #{resumeEmail,jdbcType=VARCHAR},
+      resume_gender = #{resumeGender,jdbcType=CHAR},
+      resume_leaving__working = #{resumeLeavingWorking,jdbcType=VARCHAR},
+      resume_live_city = #{resumeLiveCity,jdbcType=VARCHAR},
+      resume_personid = #{resumePersonid,jdbcType=VARCHAR},
+      resume_income = #{resumeIncome,jdbcType=DECIMAL},
+      resume_full_part_time = #{resumeFullPartTime,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where resume_id = #{resumeId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.JobMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.Job" >
+    
+    <id column="job_id" property="jobId" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="job_name" property="jobName" jdbcType="VARCHAR" />
+    <result column="job_city" property="jobCity" jdbcType="VARCHAR" />
+    <result column="job_year" property="jobYear" jdbcType="VARCHAR" />
+    <result column="job_degree" property="jobDegree" jdbcType="VARCHAR" />
+    <result column="job_need_number" property="jobNeedNumber" jdbcType="INTEGER" />
+    <result column="job_publish_time" property="jobPublishTime" jdbcType="TIMESTAMP" />
+    <result column="job_welfare" property="jobWelfare" jdbcType="VARCHAR" />
+    <result column="job_duty" property="jobDuty" jdbcType="VARCHAR" />
+    <result column="job_demand" property="jobDemand" jdbcType="VARCHAR" />
+    <result column="job_addr_detail" property="jobAddrDetail" jdbcType="VARCHAR" />
+    <result column="job_min_salary" property="jobMinSalary" jdbcType="DECIMAL" />
+    <result column="job_max_salary" property="jobMaxSalary" jdbcType="DECIMAL" />
+    <result column="job_search_keyword" property="jobSearchKeyword" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    job_id, company_id, job_name, job_city, job_year, job_degree, job_need_number, job_publish_time, 
+    job_welfare, job_duty, job_demand, job_addr_detail, job_min_salary, job_max_salary, 
+    job_search_keyword, status, other1, other2
+  </sql>
+
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.JobExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from job
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from job
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.JobExample" >
+     
+    delete from job
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.Job" >
+     
+    insert into job (job_id, company_id, job_name, 
+      job_city, job_year, job_degree, 
+      job_need_number, job_publish_time, job_welfare, 
+      job_duty, job_demand, job_addr_detail, 
+      job_min_salary, job_max_salary, job_search_keyword, 
+      status, other1, other2
+      )
+    values (#{jobId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{jobName,jdbcType=VARCHAR}, 
+      #{jobCity,jdbcType=VARCHAR}, #{jobYear,jdbcType=VARCHAR}, #{jobDegree,jdbcType=VARCHAR}, 
+      #{jobNeedNumber,jdbcType=INTEGER}, #{jobPublishTime,jdbcType=TIMESTAMP}, #{jobWelfare,jdbcType=VARCHAR}, 
+      #{jobDuty,jdbcType=VARCHAR}, #{jobDemand,jdbcType=VARCHAR}, #{jobAddrDetail,jdbcType=VARCHAR}, 
+      #{jobMinSalary,jdbcType=DECIMAL}, #{jobMaxSalary,jdbcType=DECIMAL}, #{jobSearchKeyword,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.Job" >
+     
+    insert into job
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        job_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="jobName != null" >
+        job_name,
+      </if>
+      <if test="jobCity != null" >
+        job_city,
+      </if>
+      <if test="jobYear != null" >
+        job_year,
+      </if>
+      <if test="jobDegree != null" >
+        job_degree,
+      </if>
+      <if test="jobNeedNumber != null" >
+        job_need_number,
+      </if>
+      <if test="jobPublishTime != null" >
+        job_publish_time,
+      </if>
+      <if test="jobWelfare != null" >
+        job_welfare,
+      </if>
+      <if test="jobDuty != null" >
+        job_duty,
+      </if>
+      <if test="jobDemand != null" >
+        job_demand,
+      </if>
+      <if test="jobAddrDetail != null" >
+        job_addr_detail,
+      </if>
+      <if test="jobMinSalary != null" >
+        job_min_salary,
+      </if>
+      <if test="jobMaxSalary != null" >
+        job_max_salary,
+      </if>
+      <if test="jobSearchKeyword != null" >
+        job_search_keyword,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jobId != null" >
+        #{jobId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCity != null" >
+        #{jobCity,jdbcType=VARCHAR},
+      </if>
+      <if test="jobYear != null" >
+        #{jobYear,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDegree != null" >
+        #{jobDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNeedNumber != null" >
+        #{jobNeedNumber,jdbcType=INTEGER},
+      </if>
+      <if test="jobPublishTime != null" >
+        #{jobPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobWelfare != null" >
+        #{jobWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDuty != null" >
+        #{jobDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDemand != null" >
+        #{jobDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAddrDetail != null" >
+        #{jobAddrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="jobMinSalary != null" >
+        #{jobMinSalary,jdbcType=DECIMAL},
+      </if>
+      <if test="jobMaxSalary != null" >
+        #{jobMaxSalary,jdbcType=DECIMAL},
+      </if>
+      <if test="jobSearchKeyword != null" >
+        #{jobSearchKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.JobExample" resultType="java.lang.Integer" >
+     
+    select count(*) from job
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update job
+    <set >
+      <if test="record.jobId != null" >
+        job_id = #{record.jobId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobName != null" >
+        job_name = #{record.jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobCity != null" >
+        job_city = #{record.jobCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobYear != null" >
+        job_year = #{record.jobYear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobDegree != null" >
+        job_degree = #{record.jobDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobNeedNumber != null" >
+        job_need_number = #{record.jobNeedNumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.jobPublishTime != null" >
+        job_publish_time = #{record.jobPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.jobWelfare != null" >
+        job_welfare = #{record.jobWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobDuty != null" >
+        job_duty = #{record.jobDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobDemand != null" >
+        job_demand = #{record.jobDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobAddrDetail != null" >
+        job_addr_detail = #{record.jobAddrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobMinSalary != null" >
+        job_min_salary = #{record.jobMinSalary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jobMaxSalary != null" >
+        job_max_salary = #{record.jobMaxSalary,jdbcType=DECIMAL},
+      </if>
+      <if test="record.jobSearchKeyword != null" >
+        job_search_keyword = #{record.jobSearchKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update job
+    set job_id = #{record.jobId,jdbcType=INTEGER},
+      company_id = #{record.companyId,jdbcType=INTEGER},
+      job_name = #{record.jobName,jdbcType=VARCHAR},
+      job_city = #{record.jobCity,jdbcType=VARCHAR},
+      job_year = #{record.jobYear,jdbcType=VARCHAR},
+      job_degree = #{record.jobDegree,jdbcType=VARCHAR},
+      job_need_number = #{record.jobNeedNumber,jdbcType=INTEGER},
+      job_publish_time = #{record.jobPublishTime,jdbcType=TIMESTAMP},
+      job_welfare = #{record.jobWelfare,jdbcType=VARCHAR},
+      job_duty = #{record.jobDuty,jdbcType=VARCHAR},
+      job_demand = #{record.jobDemand,jdbcType=VARCHAR},
+      job_addr_detail = #{record.jobAddrDetail,jdbcType=VARCHAR},
+      job_min_salary = #{record.jobMinSalary,jdbcType=DECIMAL},
+      job_max_salary = #{record.jobMaxSalary,jdbcType=DECIMAL},
+      job_search_keyword = #{record.jobSearchKeyword,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.Job" >
+     
+    update job
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null" >
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobCity != null" >
+        job_city = #{jobCity,jdbcType=VARCHAR},
+      </if>
+      <if test="jobYear != null" >
+        job_year = #{jobYear,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDegree != null" >
+        job_degree = #{jobDegree,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNeedNumber != null" >
+        job_need_number = #{jobNeedNumber,jdbcType=INTEGER},
+      </if>
+      <if test="jobPublishTime != null" >
+        job_publish_time = #{jobPublishTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jobWelfare != null" >
+        job_welfare = #{jobWelfare,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDuty != null" >
+        job_duty = #{jobDuty,jdbcType=VARCHAR},
+      </if>
+      <if test="jobDemand != null" >
+        job_demand = #{jobDemand,jdbcType=VARCHAR},
+      </if>
+      <if test="jobAddrDetail != null" >
+        job_addr_detail = #{jobAddrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="jobMinSalary != null" >
+        job_min_salary = #{jobMinSalary,jdbcType=DECIMAL},
+      </if>
+      <if test="jobMaxSalary != null" >
+        job_max_salary = #{jobMaxSalary,jdbcType=DECIMAL},
+      </if>
+      <if test="jobSearchKeyword != null" >
+        job_search_keyword = #{jobSearchKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.Job" >
+     
+    update job
+    set company_id = #{companyId,jdbcType=INTEGER},
+      job_name = #{jobName,jdbcType=VARCHAR},
+      job_city = #{jobCity,jdbcType=VARCHAR},
+      job_year = #{jobYear,jdbcType=VARCHAR},
+      job_degree = #{jobDegree,jdbcType=VARCHAR},
+      job_need_number = #{jobNeedNumber,jdbcType=INTEGER},
+      job_publish_time = #{jobPublishTime,jdbcType=TIMESTAMP},
+      job_welfare = #{jobWelfare,jdbcType=VARCHAR},
+      job_duty = #{jobDuty,jdbcType=VARCHAR},
+      job_demand = #{jobDemand,jdbcType=VARCHAR},
+      job_addr_detail = #{jobAddrDetail,jdbcType=VARCHAR},
+      job_min_salary = #{jobMinSalary,jdbcType=DECIMAL},
+      job_max_salary = #{jobMaxSalary,jdbcType=DECIMAL},
+      job_search_keyword = #{jobSearchKeyword,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where job_id = #{jobId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllJobBySearch" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM job
+    <where>
+      <if test="publishDay != null">
+        AND TO_DAYS(NOW()) - TO_DAYS(job_publish_time) &lt;= #{publishDay}
+      </if>
+      <if test="maxSalary != null">
+        <if test="minSalary != null">
+          AND job_min_salary &lt;= #{maxSalary} AND job_max_salary >= #{minSalary}
+        </if>
+      </if>
+      <if test="workYear != null">
+        AND job_year LIKE "%${workYear}%"
+      </if>
+      <if test="eduRequest != null">
+        AND job_year LIKE "%${eduRequest}%"
+      </if>
+      <choose>
+        <when test="keywords != null">
+          AND( (job_name LIKE "%${keywords}%")OR (job_search_keyword LIKE "%${keywords}%") ) AND status = 0
+        </when>
+        <otherwise>
+          AND status = 0
+        </otherwise>
+      </choose>
+    </where>
+    ORDER BY job_publish_time desc
+  </select>
+
+</mapper>

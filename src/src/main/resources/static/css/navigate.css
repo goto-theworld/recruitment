@@ -1,0 +1,138 @@
+/*去除默认样式*/
+#index_head * {
+    margin: 0;
+    padding: 0;
+}
+
+/*导航条*/
+#index_head a {
+    text-decoration: none;
+    /*color: white;*/
+}
+
+#index_head {
+    width: 100%;
+    height: 50px;
+    background-color: #202329;
+    overflow: hidden;
+    /*position: fixed;*/
+    /*top: 0;*/
+    /*z-index: 1000;*/
+}
+
+/*logo部分*/
+#index_head #logoInfo {
+    width: 1000px;
+    height: 50px;
+    margin: auto;
+    overflow: hidden;
+    /*border:1px solid white;*/
+}
+
+#index_head #logoImg {
+    float: left;
+}
+
+#index_head #logoImg img {
+    margin-top: 15px;
+    width: 100px;
+    height: 20px;
+}
+
+#index_head #addressimg {
+    width: 20px;
+    height: 20px;
+    margin-top: 15px;
+    margin-left: 10px;
+    float: left;
+}
+
+#index_head #addressimg + span {
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 15px;
+    color: white;
+    float: left;
+}
+
+/*无序列表-首页*/
+#index_head #home {
+    width: 150px;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30px;
+    color: white;
+    margin-top: 10px;
+    font-size: 14px;
+    float: left;
+}
+
+#index_head #home li a {
+    color: white;
+}
+
+/*index_head中所有的li的样式*/
+#index_head #logoInfo li a:hover {
+    color: #2fa0d4;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+/*第二个无序列表-上传简历 */
+/*1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111*/
+#index_head .loginPart {
+    float: right;
+    width: 35%;
+    height: 50px;
+    overflow: hidden;
+    /*display: none;*/
+}
+
+#index_head .loginPart ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 30px;
+    color: white;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#index_head .loginPart ul li {
+    position: relative;
+}
+
+#index_head .loginPart ul li a {
+    color: white;
+}
+
+#index_head .loginPart img {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -10px;
+    right: -10px;
+}
+
+
+#index_head .loginPart .clickBtn {
+    display: inline-block;
+    border: 1px solid #2fa0d4;
+    border-radius: 5px;
+    padding: 3px 10px;
+    background-color: #202329;
+    color: white;
+    font-size: 14px;
+    margin-top: 1px;
+    text-align: center;
+    line-height: 20px;
+}
+
+/*登录注册按钮的样式*/
+#index_head .loginPart .clickBtn:hover {
+    color: #2fa0d4;
+    transition: 0.5s;
+}

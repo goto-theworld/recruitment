@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.HonorMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.Honor" >
+   
+    <id column="honor_id" property="honorId" jdbcType="INTEGER" />
+    <result column="resume_id" property="resumeId" jdbcType="INTEGER" />
+    <result column="honor_create_time" property="honorCreateTime" jdbcType="DATE" />
+    <result column="honor_name" property="honorName" jdbcType="VARCHAR" />
+    <result column="honor_grade" property="honorGrade" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    
+    honor_id, resume_id, honor_create_time, honor_name, honor_grade, status, other1
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.HonorExample" >
+    
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from honor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    
+    select 
+    <include refid="Base_Column_List" />
+    from honor
+    where honor_id = #{honorId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    
+    delete from honor
+    where honor_id = #{honorId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.HonorExample" >
+    
+    delete from honor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.Honor" >
+    
+    insert into honor (honor_id, resume_id, honor_create_time, 
+      honor_name, honor_grade, status, 
+      other1)
+    values (#{honorId,jdbcType=INTEGER}, #{resumeId,jdbcType=INTEGER}, #{honorCreateTime,jdbcType=DATE}, 
+      #{honorName,jdbcType=VARCHAR}, #{honorGrade,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{other1,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.Honor" >
+    
+    insert into honor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="honorId != null" >
+        honor_id,
+      </if>
+      <if test="resumeId != null" >
+        resume_id,
+      </if>
+      <if test="honorCreateTime != null" >
+        honor_create_time,
+      </if>
+      <if test="honorName != null" >
+        honor_name,
+      </if>
+      <if test="honorGrade != null" >
+        honor_grade,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="honorId != null" >
+        #{honorId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="honorCreateTime != null" >
+        #{honorCreateTime,jdbcType=DATE},
+      </if>
+      <if test="honorName != null" >
+        #{honorName,jdbcType=VARCHAR},
+      </if>
+      <if test="honorGrade != null" >
+        #{honorGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.HonorExample" resultType="java.lang.Integer" >
+    
+    select count(*) from honor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    
+    update honor
+    <set >
+      <if test="record.honorId != null" >
+        honor_id = #{record.honorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeId != null" >
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.honorCreateTime != null" >
+        honor_create_time = #{record.honorCreateTime,jdbcType=DATE},
+      </if>
+      <if test="record.honorName != null" >
+        honor_name = #{record.honorName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.honorGrade != null" >
+        honor_grade = #{record.honorGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    
+    update honor
+    set honor_id = #{record.honorId,jdbcType=INTEGER},
+      resume_id = #{record.resumeId,jdbcType=INTEGER},
+      honor_create_time = #{record.honorCreateTime,jdbcType=DATE},
+      honor_name = #{record.honorName,jdbcType=VARCHAR},
+      honor_grade = #{record.honorGrade,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.Honor" >
+    
+    update honor
+    <set >
+      <if test="resumeId != null" >
+        resume_id = #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="honorCreateTime != null" >
+        honor_create_time = #{honorCreateTime,jdbcType=DATE},
+      </if>
+      <if test="honorName != null" >
+        honor_name = #{honorName,jdbcType=VARCHAR},
+      </if>
+      <if test="honorGrade != null" >
+        honor_grade = #{honorGrade,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where honor_id = #{honorId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.Honor" >
+    
+    update honor
+    set resume_id = #{resumeId,jdbcType=INTEGER},
+      honor_create_time = #{honorCreateTime,jdbcType=DATE},
+      honor_name = #{honorName,jdbcType=VARCHAR},
+      honor_grade = #{honorGrade,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR}
+    where honor_id = #{honorId,jdbcType=INTEGER}
+  </update>
+</mapper>

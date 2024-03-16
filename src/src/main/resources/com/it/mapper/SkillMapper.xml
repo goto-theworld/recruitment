@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.SkillMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.Skill" >
+    
+    <id column="skill_id" property="skillId" jdbcType="INTEGER" />
+    <result column="resume_id" property="resumeId" jdbcType="INTEGER" />
+    <result column="skill_name" property="skillName" jdbcType="VARCHAR" />
+    <result column="skill_desc" property="skillDesc" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    skill_id, resume_id, skill_name, skill_desc, status, other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.SkillExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from skill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from skill
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from skill
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.SkillExample" >
+     
+    delete from skill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.Skill" >
+     
+    insert into skill (skill_id, resume_id, skill_name, 
+      skill_desc, status, other1, 
+      other2)
+    values (#{skillId,jdbcType=INTEGER}, #{resumeId,jdbcType=INTEGER}, #{skillName,jdbcType=VARCHAR}, 
+      #{skillDesc,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{other1,jdbcType=VARCHAR}, 
+      #{other2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.Skill" >
+     
+    insert into skill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="skillId != null" >
+        skill_id,
+      </if>
+      <if test="resumeId != null" >
+        resume_id,
+      </if>
+      <if test="skillName != null" >
+        skill_name,
+      </if>
+      <if test="skillDesc != null" >
+        skill_desc,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="skillId != null" >
+        #{skillId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="skillName != null" >
+        #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="skillDesc != null" >
+        #{skillDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.SkillExample" resultType="java.lang.Integer" >
+     
+    select count(*) from skill
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update skill
+    <set >
+      <if test="record.skillId != null" >
+        skill_id = #{record.skillId,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeId != null" >
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.skillName != null" >
+        skill_name = #{record.skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.skillDesc != null" >
+        skill_desc = #{record.skillDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update skill
+    set skill_id = #{record.skillId,jdbcType=INTEGER},
+      resume_id = #{record.resumeId,jdbcType=INTEGER},
+      skill_name = #{record.skillName,jdbcType=VARCHAR},
+      skill_desc = #{record.skillDesc,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.Skill" >
+     
+    update skill
+    <set >
+      <if test="resumeId != null" >
+        resume_id = #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="skillName != null" >
+        skill_name = #{skillName,jdbcType=VARCHAR},
+      </if>
+      <if test="skillDesc != null" >
+        skill_desc = #{skillDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.Skill" >
+     
+    update skill
+    set resume_id = #{resumeId,jdbcType=INTEGER},
+      skill_name = #{skillName,jdbcType=VARCHAR},
+      skill_desc = #{skillDesc,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where skill_id = #{skillId,jdbcType=INTEGER}
+  </update>
+</mapper>

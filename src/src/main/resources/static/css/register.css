@@ -1,0 +1,230 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: 20px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+.bgImg {
+    width: 1002px;
+    height: 554px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -277px;
+    margin-left: -501px;
+}
+
+.lrcon {
+    width: 1002px;
+    margin: 50px auto;
+}
+
+/*表单所在位置*/
+.lrcon .lrbox {
+    width: 760px;
+    height: 600px;
+    margin: 10px auto 0;
+}
+
+.lrcon .describes {
+    float: left;
+    width: 159px;
+    padding: 50px 40px 0;
+    border-top: 10px solid #dee0e2;
+}
+
+.lrcon .describes .des-c {
+    position: relative;
+    margin-bottom: 60px;
+    padding-left: 50px;
+}
+
+/*左边标签*/
+#des-c-1 {
+    margin-top: 40px;
+}
+
+.des-c > img {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    top: 50%;
+    left: 0;
+    margin-top: -16px;
+}
+
+.lrcon .describes .des-c .des-cn .des-cn-p {
+    color: #3bbee7;
+    margin-bottom: 5px;
+}
+
+.lrcon .describes .des-c .des-cn .des-cn-div {
+    color: #999;
+    font-size: 12px;
+}
+
+/*下边*/
+.lrcon .lr-bm {
+    display: block;
+    width: 760px;
+    height: 18px;
+    margin: 0 auto;
+    position: relative;
+    top: -4px;
+}
+
+/*右边框*/
+.listInfo {
+    position: relative;
+    float: left;
+    width: 440px;
+    padding: 0 40px 32px;
+    border-top: 10px solid #dee0e2;
+}
+
+.lr-h {
+    text-align: center;
+    line-height: 24px;
+    font-size: 18px;
+    padding: 40px;
+    overflow: hidden;
+}
+
+.lr-h .choose {
+    color: #2fa0d4 !important;
+    font-size: 24px;
+}
+
+.lr-h a:first-child {
+    float: left;
+    color: #333;
+    transition: 0.3s;
+}
+
+.lr-h a:last-child {
+    float: right;
+    color: #333;
+    transition: 0.3s;
+}
+
+.lr-h a:hover {
+    color: #2fa0d4;
+}
+
+/*=============================================*/
+#signup > div {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+#signup label {
+    float: left;
+    font-weight: bold;
+    color: #333;
+}
+
+#signup span {
+    float: right;
+    color: #f00;
+}
+
+#signup .ipt1 {
+    width: 439px;
+}
+
+#signup .ipt2 {
+    width: 320px;
+}
+
+#signup .ipt1, #signup .ipt2 {
+    float: left;
+    display: inline-block;
+    height: 35px;
+    padding-right: 100px;
+    text-indent: 10px;
+    border: 1px solid #2fa0d4;
+    outline: 1px solid #2fa0d4;
+}
+
+#registerMsg {
+    display: block;
+    width: 100%;
+    line-height: 25px;
+    height: 25px;
+    overflow: hidden;
+    text-align: center;
+}
+
+#sendCodeBtn {
+    float: right;
+}
+
+#registerBtn, #loginBtn, #loginBtn1, #loginBtn2 {
+    width: 100%;
+}
+
+.btn:hover {
+    background-color: #2fa0d4;
+}
+
+.btn {
+    background-color: #2fa0d4;
+    color: #fff;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    outline: none;
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus {
+    outline: 1px solid #2fa0d4;
+    outline-offset: -2px;
+}
+
+.btn.disabled,
+.btn[disabled] {
+    cursor: not-allowed;
+    filter: grayscale(100%);
+    box-shadow: none;
+    pointer-events: none;
+}
+
+
+.toRe {
+    text-align: right;
+}
+
+.toRe a {
+    color: #2fa0d4;
+}
+
+
+
+

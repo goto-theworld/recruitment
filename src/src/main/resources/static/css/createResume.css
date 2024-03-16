@@ -1,0 +1,411 @@
+/*=================================需要编辑路径的地方======================================*/
+/*.edit_btn {*/
+/*background-image: url(/images/createResume/edit_icon.svg);*/
+/*}*/
+
+/*.delete_btn {*/
+/*background-image: url(/images/createResume/delete.svg);*/
+/*}*/
+
+.progressBar_type1 > div::after {
+    content: "\7cbe\901a";
+    /*精通*/
+}
+
+.progressBar_type2 > div::after {
+    content: "\719f\7ec3";
+    /*熟练*/
+}
+
+.progressBar_type3 > div::after {
+    content: "\826f\597d";
+    /*良好*/
+}
+
+.progressBar_type4 > div::after {
+    content: "\4e00\822c";
+    /*一般*/
+}
+
+/*=================================需要编辑路径的地方======================================*/
+
+
+body {
+    color: #61687c;
+}
+
+.main {
+    margin-top: 20px;
+}
+
+/*===========左侧模块===========*/
+#nav_bar .left_brief {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fbfafb;
+    border: 1px solid #fbfafb;
+    position: relative;
+}
+
+#nav_bar .left_brief:hover {
+    border: 1px solid #2fa0d4;
+}
+
+#nav_bar .left_brief > h3 {
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+#nav_bar .left_brief > div {
+    color: #9fa3b0;
+}
+
+#nav_bar .left_brief > div > span {
+    margin-left: 5px;
+    color: #61687c;
+}
+
+.btn_box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn_box > button {
+    height: 30px;
+    margin: 0 5px;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid #2fa0d4;
+}
+
+.btn_box > button:first-child {
+    background-color: #2fa0d4;
+    color: #fff;
+}
+
+.btn_box > button:last-child {
+    color: #2fa0d4;
+    background-color: #fff;
+}
+
+.btn_box > button:first-child:hover {
+    background-color: #2fa0d4;
+    color: #fff;
+}
+
+.btn_box > button:last-child:hover {
+    color: #2fa0d4;
+    background-color: #f8f8f8;
+}
+
+#nav_bar .left_body {
+    background-color: #fbfafb;
+    box-sizing: border-box;
+}
+
+#nav_bar .left_body > a {
+    text-decoration: none;
+    line-height: 50px;
+    border: 1px solid #eee;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+#nav_bar .left_body > a:link,
+#nav_bar .left_body > a:visited,
+#nav_bar .left_body > a:active {
+    color: #61687c;
+}
+
+#nav_bar .left_body > a:hover {
+    color: #2fa0d4;
+}
+
+/*====================================右侧模块=======================================*/
+#nav_bar {
+    position: fixed;
+    left: 50%;
+}
+
+@media (max-width: 768px) {
+    #nav_bar {
+        margin-left: -375px;
+    }
+
+    .content textarea {
+        width: 563px;
+    }
+}
+
+@media (min-width: 768px) {
+    #nav_bar {
+        margin-left: -375px;
+    }
+
+    .content textarea {
+        width: 563px;
+    }
+}
+
+@media (min-width: 992px) {
+    .btn_box > button {
+        width: 60px;
+    }
+
+    #nav_bar {
+        margin-left: -485px;
+    }
+
+    .content textarea {
+        width: 526px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .btn_box > button {
+        width: 80px;
+    }
+
+    #nav_bar {
+        margin-left: -585px;
+    }
+
+    .content textarea {
+        width: 602px;
+    }
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    float: left;
+}
+
+.icon + span,
+.icon + strong {
+    float: left;
+    margin-left: 10px;
+    line-height: 50px;
+}
+
+.container label {
+    font-weight: normal;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+
+/* 50% */
+.item_type1 {
+    width: 50%;
+}
+
+/* 100% */
+.item_type2 {
+    width: 100%;
+}
+
+.item_type1 > label,
+.item_type2 > label {
+    display: inline-block;
+    width: 80px;
+    color: #9fa3b0;
+}
+
+/*overflow: hidden;*/
+.oh {
+    margin: 5px 0;
+    overflow: hidden;
+}
+
+/*float: left;*/
+.float_l {
+    float: left;
+}
+
+/*float: right;*/
+.float_r {
+    float: right;
+}
+
+.time_item {
+    overflow: hidden;
+    width: 100%;
+}
+
+.time_item :nth-child(1) {
+    display: inline-block;
+    width: 150px;
+}
+
+.time_item :nth-child(2) {
+    display: inline-block;
+    width: 150px;
+}
+
+.time_item :nth-child(3) {
+    float: right;
+    margin-right: 100px;
+}
+
+/*===========右侧模块===========*/
+.tag_title {
+    overflow: hidden;
+    background-color: #fbfafb;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.tag_title strong {
+    color: #2fa0d4;
+}
+
+.tag_title .add_content {
+    color: rgba(15, 187, 231, 0.9);
+    cursor: pointer;
+    line-height: 50px;
+    font-size: 14px;
+    float: right;
+    margin-right: 20px;
+}
+
+.right_body {
+    min-width: 800px;
+}
+
+.right_body .content {
+    line-height: 30px;
+    /*font-size: 0;*/
+    padding: 10px;
+    margin: 0;
+    position: relative;
+    border: 1px solid #fff;
+    overflow: hidden;
+}
+
+.right_body .content:hover {
+    border: 1px solid #2fa0d4;
+}
+
+#face {
+    margin: 10px 20px 20px 20px;
+    width: 120px;
+    height: 140px;
+    /*border: 1px solid black;*/
+}
+
+h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.at > span + span::before {
+    content: "|";
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+/*===========右侧模块 - 专业技能===========*/
+/* 进度条模块 */
+.progressBar {
+    width: 75%;
+    min-width: 350px;
+    height: 20px;
+    border-radius: 9px;
+    background-color: #ddd;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+}
+
+.progressBar div {
+    height: 100%;
+    border-radius: 10px;
+    background-color: #2fa0d4;
+    position: relative;
+}
+
+.progressBar > div::after {
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+    position: absolute;
+    right: 15px;
+}
+
+.progressBar_type1 > div {
+    width: 100%;
+}
+
+.progressBar_type2 > div {
+    width: 75%;
+}
+
+.progressBar_type3 > div {
+    width: 50%;
+}
+
+.progressBar_type4 > div {
+    width: 25%;
+}
+
+
+/* 编辑删除按钮 */
+#editNameBtn,
+.edit_btn,
+.delete_btn {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    overflow: hidden;
+    position: absolute;
+    top: 13px;
+    display: none;
+}
+
+#editNameBtn,
+.edit_btn {
+    right: 10px;
+}
+
+.delete_btn {
+    right: 50px;
+}
+
+#nav_bar .left_brief:hover #editNameBtn,
+.content:hover .edit_btn,
+.content:hover .delete_btn {
+    display: block;
+}
+
+/*编辑模块*/
+.left_brief input,
+.content input,
+.content textarea {
+    padding: 0 5px;
+    /*margin-left: 10px;*/
+    outline-color: #2fa0d4;
+}
+
+.content input,
+.content select {
+    outline-color: #2fa0d4;
+    width: 175px;
+    height: 30px;
+    border: 2px inset initial;
+    padding: 0 5px;
+}
+
+.left_brief input {
+    width: 100%;
+    height: 30px;
+}
+
+
+
+
+

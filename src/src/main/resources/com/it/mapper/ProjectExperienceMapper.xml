@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.ProjectExperienceMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.ProjectExperience" >
+    
+    <id column="project_experi_id" property="projectExperiId" jdbcType="INTEGER" />
+    <result column="resume_id" property="resumeId" jdbcType="INTEGER" />
+    <result column="project_company_name" property="projectCompanyName" jdbcType="VARCHAR" />
+    <result column="project_start_time" property="projectStartTime" jdbcType="DATE" />
+    <result column="project_end_time" property="projectEndTime" jdbcType="TIMESTAMP" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="project_content_desc" property="projectContentDesc" jdbcType="VARCHAR" />
+    <result column="project_duty_desc" property="projectDutyDesc" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    project_experi_id, resume_id, project_company_name, project_start_time, project_end_time, 
+    project_name, project_content_desc, project_duty_desc, status, other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.ProjectExperienceExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from project_experience
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from project_experience
+    where project_experi_id = #{projectExperiId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from project_experience
+    where project_experi_id = #{projectExperiId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.ProjectExperienceExample" >
+     
+    delete from project_experience
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.ProjectExperience" >
+     
+    insert into project_experience (project_experi_id, resume_id, project_company_name, 
+      project_start_time, project_end_time, project_name, 
+      project_content_desc, project_duty_desc, status, 
+      other1, other2)
+    values (#{projectExperiId,jdbcType=INTEGER}, #{resumeId,jdbcType=INTEGER}, #{projectCompanyName,jdbcType=VARCHAR}, 
+      #{projectStartTime,jdbcType=DATE}, #{projectEndTime,jdbcType=TIMESTAMP}, #{projectName,jdbcType=VARCHAR}, 
+      #{projectContentDesc,jdbcType=VARCHAR}, #{projectDutyDesc,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.ProjectExperience" >
+     
+    insert into project_experience
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectExperiId != null" >
+        project_experi_id,
+      </if>
+      <if test="resumeId != null" >
+        resume_id,
+      </if>
+      <if test="projectCompanyName != null" >
+        project_company_name,
+      </if>
+      <if test="projectStartTime != null" >
+        project_start_time,
+      </if>
+      <if test="projectEndTime != null" >
+        project_end_time,
+      </if>
+      <if test="projectName != null" >
+        project_name,
+      </if>
+      <if test="projectContentDesc != null" >
+        project_content_desc,
+      </if>
+      <if test="projectDutyDesc != null" >
+        project_duty_desc,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectExperiId != null" >
+        #{projectExperiId,jdbcType=INTEGER},
+      </if>
+      <if test="resumeId != null" >
+        #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="projectCompanyName != null" >
+        #{projectCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStartTime != null" >
+        #{projectStartTime,jdbcType=DATE},
+      </if>
+      <if test="projectEndTime != null" >
+        #{projectEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectName != null" >
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectContentDesc != null" >
+        #{projectContentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDutyDesc != null" >
+        #{projectDutyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.ProjectExperienceExample" resultType="java.lang.Integer" >
+     
+    select count(*) from project_experience
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update project_experience
+    <set >
+      <if test="record.projectExperiId != null" >
+        project_experi_id = #{record.projectExperiId,jdbcType=INTEGER},
+      </if>
+      <if test="record.resumeId != null" >
+        resume_id = #{record.resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.projectCompanyName != null" >
+        project_company_name = #{record.projectCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectStartTime != null" >
+        project_start_time = #{record.projectStartTime,jdbcType=DATE},
+      </if>
+      <if test="record.projectEndTime != null" >
+        project_end_time = #{record.projectEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.projectName != null" >
+        project_name = #{record.projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectContentDesc != null" >
+        project_content_desc = #{record.projectContentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.projectDutyDesc != null" >
+        project_duty_desc = #{record.projectDutyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update project_experience
+    set project_experi_id = #{record.projectExperiId,jdbcType=INTEGER},
+      resume_id = #{record.resumeId,jdbcType=INTEGER},
+      project_company_name = #{record.projectCompanyName,jdbcType=VARCHAR},
+      project_start_time = #{record.projectStartTime,jdbcType=DATE},
+      project_end_time = #{record.projectEndTime,jdbcType=TIMESTAMP},
+      project_name = #{record.projectName,jdbcType=VARCHAR},
+      project_content_desc = #{record.projectContentDesc,jdbcType=VARCHAR},
+      project_duty_desc = #{record.projectDutyDesc,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.ProjectExperience" >
+     
+    update project_experience
+    <set >
+      <if test="resumeId != null" >
+        resume_id = #{resumeId,jdbcType=INTEGER},
+      </if>
+      <if test="projectCompanyName != null" >
+        project_company_name = #{projectCompanyName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectStartTime != null" >
+        project_start_time = #{projectStartTime,jdbcType=DATE},
+      </if>
+      <if test="projectEndTime != null" >
+        project_end_time = #{projectEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="projectName != null" >
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="projectContentDesc != null" >
+        project_content_desc = #{projectContentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="projectDutyDesc != null" >
+        project_duty_desc = #{projectDutyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where project_experi_id = #{projectExperiId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.ProjectExperience" >
+     
+    update project_experience
+    set resume_id = #{resumeId,jdbcType=INTEGER},
+      project_company_name = #{projectCompanyName,jdbcType=VARCHAR},
+      project_start_time = #{projectStartTime,jdbcType=DATE},
+      project_end_time = #{projectEndTime,jdbcType=TIMESTAMP},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      project_content_desc = #{projectContentDesc,jdbcType=VARCHAR},
+      project_duty_desc = #{projectDutyDesc,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where project_experi_id = #{projectExperiId,jdbcType=INTEGER}
+  </update>
+</mapper>

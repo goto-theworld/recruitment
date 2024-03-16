@@ -1,0 +1,127 @@
+.main div {
+    overflow: hidden;
+}
+
+.main {
+    width: 1000px;
+    margin: auto
+}
+
+.main > div {
+    padding: 10px;
+}
+
+.main > div + div {
+    border-top: 1px solid #eee;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.companyContent {
+    width: 680px;
+    float: left;
+}
+
+.companyContent .part {
+    margin: 10px auto;
+}
+
+.companyContent .part h4 {
+    padding-left: 10px;
+    border-left: 5px solid #2fa0d4;
+}
+
+.companyContent .part .content label {
+    padding-right: 30px;
+}
+
+.companyInfo {
+    width: 290px;
+    float: right;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.companyInfo > div,
+.companyInfo > a {
+    display: block;
+    text-align: center;
+}
+
+.companyInfo > h3 {
+    text-align: center;
+    /*margin-bottom: 0;*/
+}
+
+.companyInfo .left {
+    text-align: left;
+}
+
+.companyInfo > a,
+.companyInfo .at {
+    margin: 10px auto;
+    padding-left: 10px;
+}
+
+.companyInfo .companyPic {
+    width: 280px;
+
+}
+
+.headerInfo {
+    line-height: 20px;
+    position: relative;
+}
+
+.green {
+    color: #2fa0d4;
+}
+
+.headerInfo p {
+    font-size: 0;
+}
+
+.headerInfo span {
+    font-size: 14px;
+    padding-right: 10px;
+}
+
+.headerInfo .labelInfo + .labelInfo {
+    padding: 0 10px;
+    border-left: 1px solid #000;
+}
+
+.main .headerInfo .op1 {
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    display: flex;
+    justify-content: start;
+}
+
+.main .headerInfo .op1 > div {
+    margin-left: 30px;
+}
+
+.main .headerInfo .op2 {
+    position: absolute;
+    right: 20px;
+    bottom: 40px;
+}
+
+.main .headerInfo .op2 button {
+    width: 200px;
+    height: 40px;
+    background-color: #2fa0d4;
+    color: #fff;
+    outline: none;
+}
+
+#submitBtn:disabled {
+    background-color: #9fa3b0;
+    border-color: #9fa3b0;
+}

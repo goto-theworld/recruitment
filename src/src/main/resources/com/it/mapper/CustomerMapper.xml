@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.Customer" >
+    
+    <id column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="cust_telno" property="custTelno" jdbcType="BIGINT" />
+    <result column="cust_email" property="custEmail" jdbcType="VARCHAR" />
+    <result column="cust_password" property="custPassword" jdbcType="VARCHAR" />
+    <result column="cust_regist_time" property="custRegistTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    cust_id, cust_name, cust_telno, cust_email, cust_password, cust_regist_time, status, 
+    other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.CustomerExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from customer
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.CustomerExample" >
+     
+    delete from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.Customer" >
+     
+    insert into customer (cust_id, cust_name, cust_telno, 
+      cust_email, cust_password, cust_regist_time, 
+      status, other1, other2
+      )
+    values (#{custId,jdbcType=INTEGER}, #{custName,jdbcType=VARCHAR}, #{custTelno,jdbcType=BIGINT}, 
+      #{custEmail,jdbcType=VARCHAR}, #{custPassword,jdbcType=VARCHAR}, #{custRegistTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.Customer" >
+     
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="custName != null" >
+        cust_name,
+      </if>
+      <if test="custTelno != null" >
+        cust_telno,
+      </if>
+      <if test="custEmail != null" >
+        cust_email,
+      </if>
+      <if test="custPassword != null" >
+        cust_password,
+      </if>
+      <if test="custRegistTime != null" >
+        cust_regist_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="custName != null" >
+        #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="custTelno != null" >
+        #{custTelno,jdbcType=BIGINT},
+      </if>
+      <if test="custEmail != null" >
+        #{custEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="custPassword != null" >
+        #{custPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="custRegistTime != null" >
+        #{custRegistTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.CustomerExample" resultType="java.lang.Integer" >
+     
+    select count(*) from customer
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update customer
+    <set >
+      <if test="record.custId != null" >
+        cust_id = #{record.custId,jdbcType=INTEGER},
+      </if>
+      <if test="record.custName != null" >
+        cust_name = #{record.custName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custTelno != null" >
+        cust_telno = #{record.custTelno,jdbcType=BIGINT},
+      </if>
+      <if test="record.custEmail != null" >
+        cust_email = #{record.custEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custPassword != null" >
+        cust_password = #{record.custPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custRegistTime != null" >
+        cust_regist_time = #{record.custRegistTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update customer
+    set cust_id = #{record.custId,jdbcType=INTEGER},
+      cust_name = #{record.custName,jdbcType=VARCHAR},
+      cust_telno = #{record.custTelno,jdbcType=BIGINT},
+      cust_email = #{record.custEmail,jdbcType=VARCHAR},
+      cust_password = #{record.custPassword,jdbcType=VARCHAR},
+      cust_regist_time = #{record.custRegistTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.Customer" >
+     
+    update customer
+    <set >
+      <if test="custName != null" >
+        cust_name = #{custName,jdbcType=VARCHAR},
+      </if>
+      <if test="custTelno != null" >
+        cust_telno = #{custTelno,jdbcType=BIGINT},
+      </if>
+      <if test="custEmail != null" >
+        cust_email = #{custEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="custPassword != null" >
+        cust_password = #{custPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="custRegistTime != null" >
+        cust_regist_time = #{custRegistTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.Customer" >
+     
+    update customer
+    set cust_name = #{custName,jdbcType=VARCHAR},
+      cust_telno = #{custTelno,jdbcType=BIGINT},
+      cust_email = #{custEmail,jdbcType=VARCHAR},
+      cust_password = #{custPassword,jdbcType=VARCHAR},
+      cust_regist_time = #{custRegistTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where cust_id = #{custId,jdbcType=INTEGER}
+  </update>
+</mapper>

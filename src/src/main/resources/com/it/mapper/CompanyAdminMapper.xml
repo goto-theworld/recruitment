@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.CompanyAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.CompanyAdmin" >
+    
+    <id column="company_admin_id" property="companyAdminId" jdbcType="INTEGER" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_admin_name" property="companyAdminName" jdbcType="VARCHAR" />
+    <result column="company_admin_telno" property="companyAdminTelno" jdbcType="BIGINT" />
+    <result column="company_admin_email" property="companyAdminEmail" jdbcType="VARCHAR" />
+    <result column="company_admin_password" property="companyAdminPassword" jdbcType="VARCHAR" />
+    <result column="company_admin_create_time" property="companyAdminCreateTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    company_admin_id, company_id, company_admin_name, company_admin_telno, company_admin_email, 
+    company_admin_password, company_admin_create_time, status, other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.CompanyAdminExample" >
+    
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from company_admin
+    where company_admin_id = #{companyAdminId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from company_admin
+    where company_admin_id = #{companyAdminId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.CompanyAdminExample" >
+     
+    delete from company_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.CompanyAdmin" >
+     
+    insert into company_admin (company_admin_id, company_id, company_admin_name, 
+      company_admin_telno, company_admin_email, company_admin_password, 
+      company_admin_create_time, status, other1, 
+      other2)
+    values (#{companyAdminId,jdbcType=INTEGER}, #{companyId,jdbcType=INTEGER}, #{companyAdminName,jdbcType=VARCHAR}, 
+      #{companyAdminTelno,jdbcType=BIGINT}, #{companyAdminEmail,jdbcType=VARCHAR}, #{companyAdminPassword,jdbcType=VARCHAR}, 
+      #{companyAdminCreateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, #{other1,jdbcType=VARCHAR}, 
+      #{other2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.CompanyAdmin" >
+     
+    insert into company_admin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyAdminId != null" >
+        company_admin_id,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyAdminName != null" >
+        company_admin_name,
+      </if>
+      <if test="companyAdminTelno != null" >
+        company_admin_telno,
+      </if>
+      <if test="companyAdminEmail != null" >
+        company_admin_email,
+      </if>
+      <if test="companyAdminPassword != null" >
+        company_admin_password,
+      </if>
+      <if test="companyAdminCreateTime != null" >
+        company_admin_create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyAdminId != null" >
+        #{companyAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAdminName != null" >
+        #{companyAdminName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdminTelno != null" >
+        #{companyAdminTelno,jdbcType=BIGINT},
+      </if>
+      <if test="companyAdminEmail != null" >
+        #{companyAdminEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdminPassword != null" >
+        #{companyAdminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdminCreateTime != null" >
+        #{companyAdminCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.CompanyAdminExample" resultType="java.lang.Integer" >
+     
+    select count(*) from company_admin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update company_admin
+    <set >
+      <if test="record.companyAdminId != null" >
+        company_admin_id = #{record.companyAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyAdminName != null" >
+        company_admin_name = #{record.companyAdminName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAdminTelno != null" >
+        company_admin_telno = #{record.companyAdminTelno,jdbcType=BIGINT},
+      </if>
+      <if test="record.companyAdminEmail != null" >
+        company_admin_email = #{record.companyAdminEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAdminPassword != null" >
+        company_admin_password = #{record.companyAdminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAdminCreateTime != null" >
+        company_admin_create_time = #{record.companyAdminCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update company_admin
+    set company_admin_id = #{record.companyAdminId,jdbcType=INTEGER},
+      company_id = #{record.companyId,jdbcType=INTEGER},
+      company_admin_name = #{record.companyAdminName,jdbcType=VARCHAR},
+      company_admin_telno = #{record.companyAdminTelno,jdbcType=BIGINT},
+      company_admin_email = #{record.companyAdminEmail,jdbcType=VARCHAR},
+      company_admin_password = #{record.companyAdminPassword,jdbcType=VARCHAR},
+      company_admin_create_time = #{record.companyAdminCreateTime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.CompanyAdmin" >
+     
+    update company_admin
+    <set >
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyAdminName != null" >
+        company_admin_name = #{companyAdminName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdminTelno != null" >
+        company_admin_telno = #{companyAdminTelno,jdbcType=BIGINT},
+      </if>
+      <if test="companyAdminEmail != null" >
+        company_admin_email = #{companyAdminEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdminPassword != null" >
+        company_admin_password = #{companyAdminPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdminCreateTime != null" >
+        company_admin_create_time = #{companyAdminCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_admin_id = #{companyAdminId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.CompanyAdmin" >
+     
+    update company_admin
+    set company_id = #{companyId,jdbcType=INTEGER},
+      company_admin_name = #{companyAdminName,jdbcType=VARCHAR},
+      company_admin_telno = #{companyAdminTelno,jdbcType=BIGINT},
+      company_admin_email = #{companyAdminEmail,jdbcType=VARCHAR},
+      company_admin_password = #{companyAdminPassword,jdbcType=VARCHAR},
+      company_admin_create_time = #{companyAdminCreateTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where company_admin_id = #{companyAdminId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,212 @@
+html,
+body,
+div,
+p {
+    margin: 0;
+    padding: 0
+}
+
+body {
+
+    background-color: #ffffff
+}
+
+table {
+    font-size: 14px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    margin: auto;
+}
+
+th,
+td {
+    padding: 0
+}
+
+a {
+    text-decoration: none
+}
+
+img {
+    border: 0 none
+}
+
+.column {
+    width: 1002px;
+    margin: 20px auto;
+    line-height: 28px;
+    border: 1px solid #dedede
+}
+
+
+.column .hbox {
+    width: 185px;
+    height: 154px
+}
+
+.column .head {
+    display: block;
+    background-color: #fafafa
+}
+
+.column .box {
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 2px solid #f2f3f5
+}
+
+.column .box1 {
+    width: 100%;
+    word-wrap: break-word;
+    background-color: #f8f9fa
+}
+
+
+.column .infr {
+    width: 767px;
+    margin-left: 0;
+    table-layout: auto
+}
+
+.column .name {
+    font-size: 24px;
+    padding-bottom: 30px
+}
+
+.column .icard {
+    color: #a1a3ae;
+    padding-bottom: 18px
+}
+
+.column .vam {
+    vertical-align: middle;
+    margin-left: 5px
+}
+
+.column .box1 .vam {
+    margin-right: 5px;
+    margin-left: 0
+}
+
+.column .plate1 {
+    height: 54px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #818ba3;
+    padding: 0 80px;
+    background: #fcfcfc;
+}
+
+.column .time {
+    display: inline-block;
+    min-width: 120px;
+    line-height: 28px;
+    padding-right: 50px;
+}
+
+.column .p5 {
+    display: inline-block;
+    color: #666666;
+    padding: 0 10px;
+}
+
+.column .p15 {
+    line-height: 28px;
+    padding: 5px 50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.column .tba + .tba {
+    border-top: 1px dotted #ddd;
+}
+
+.column .tb1 {
+    width: 100%;
+    line-height: 28px;
+    color: #333333;
+    word-break: break-all;
+    /*padding: 0 20px*/
+}
+
+.column .tb2 {
+    width: 480px;
+    padding: 0 20px
+}
+
+.column .cell .skbg,
+.column .cell .skco {
+    display: inline-block;
+    width: 700px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: #ffffff;
+    vertical-align: top;
+    margin-top: 5px;
+    background-color: #dddddd;
+    border-radius: 20px;
+}
+
+.column .cell .skco {
+    text-indent: 25px;
+    font-style: normal;
+    margin-top: 0;
+    background-color: #2fa0d4;
+    z-index: 3;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+
+.column .cell .skco1 {
+    width: 100%
+}
+
+.column .cell .skco2 {
+    width: 75%
+}
+
+.column .cell .skco3 {
+    width: 50%
+}
+
+.column .cell .skco4 {
+    width: 25%
+}
+
+.keys {
+    /*标签*/
+    display: inline-block;
+    width: 80px;
+}
+
+.col1 {
+    /*一半*/
+    width: 50%;
+}
+
+.col2 {
+    /*整行*/
+    width: 100%;
+}
+
+.txt1 {
+    /*整行 */
+}
+
+.txt2 {
+    /*半行*/
+}
+
+
+
+
+
+
+
+
+

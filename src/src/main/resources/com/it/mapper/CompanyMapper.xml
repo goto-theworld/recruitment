@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.it.mapper.CompanyMapper" >
+  <resultMap id="BaseResultMap" type="com.it.pojo.Company" >
+    
+    <id column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="company_logo" property="companyLogo" jdbcType="VARCHAR" />
+    <result column="company_stage" property="companyStage" jdbcType="VARCHAR" />
+    <result column="company_emp_count" property="companyEmpCount" jdbcType="VARCHAR" />
+    <result column="company_industury" property="companyIndustury" jdbcType="VARCHAR" />
+    <result column="company_desc" property="companyDesc" jdbcType="VARCHAR" />
+    <result column="company_website" property="companyWebsite" jdbcType="VARCHAR" />
+    <result column="company_addr_province" property="companyAddrProvince" jdbcType="VARCHAR" />
+    <result column="company_addr_city" property="companyAddrCity" jdbcType="VARCHAR" />
+    <result column="company_addr_area" property="companyAddrArea" jdbcType="VARCHAR" />
+    <result column="company_adrr_detail" property="companyAdrrDetail" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="other1" property="other1" jdbcType="VARCHAR" />
+    <result column="other2" property="other2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+     
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+     
+    company_id, company_name, company_logo, company_stage, company_emp_count, company_industury, 
+    company_desc, company_website, company_addr_province, company_addr_city, company_addr_area, 
+    company_adrr_detail, status, other1, other2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.it.pojo.CompanyExample" >
+     
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+     
+    select 
+    <include refid="Base_Column_List" />
+    from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+     
+    delete from company
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.it.pojo.CompanyExample" >
+     
+    delete from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.it.pojo.Company" >
+     
+    insert into company (company_id, company_name, company_logo, 
+      company_stage, company_emp_count, company_industury, 
+      company_desc, company_website, company_addr_province, 
+      company_addr_city, company_addr_area, company_adrr_detail, 
+      status, other1, other2
+      )
+    values (#{companyId,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, #{companyLogo,jdbcType=VARCHAR}, 
+      #{companyStage,jdbcType=VARCHAR}, #{companyEmpCount,jdbcType=VARCHAR}, #{companyIndustury,jdbcType=VARCHAR}, 
+      #{companyDesc,jdbcType=VARCHAR}, #{companyWebsite,jdbcType=VARCHAR}, #{companyAddrProvince,jdbcType=VARCHAR}, 
+      #{companyAddrCity,jdbcType=VARCHAR}, #{companyAddrArea,jdbcType=VARCHAR}, #{companyAdrrDetail,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{other1,jdbcType=VARCHAR}, #{other2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.it.pojo.Company" >
+     
+    insert into company
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="companyLogo != null" >
+        company_logo,
+      </if>
+      <if test="companyStage != null" >
+        company_stage,
+      </if>
+      <if test="companyEmpCount != null" >
+        company_emp_count,
+      </if>
+      <if test="companyIndustury != null" >
+        company_industury,
+      </if>
+      <if test="companyDesc != null" >
+        company_desc,
+      </if>
+      <if test="companyWebsite != null" >
+        company_website,
+      </if>
+      <if test="companyAddrProvince != null" >
+        company_addr_province,
+      </if>
+      <if test="companyAddrCity != null" >
+        company_addr_city,
+      </if>
+      <if test="companyAddrArea != null" >
+        company_addr_area,
+      </if>
+      <if test="companyAdrrDetail != null" >
+        company_adrr_detail,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="other1 != null" >
+        other1,
+      </if>
+      <if test="other2 != null" >
+        other2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLogo != null" >
+        #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyStage != null" >
+        #{companyStage,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmpCount != null" >
+        #{companyEmpCount,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIndustury != null" >
+        #{companyIndustury,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDesc != null" >
+        #{companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null" >
+        #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddrProvince != null" >
+        #{companyAddrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddrCity != null" >
+        #{companyAddrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddrArea != null" >
+        #{companyAddrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdrrDetail != null" >
+        #{companyAdrrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        #{other2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.it.pojo.CompanyExample" resultType="java.lang.Integer" >
+     
+    select count(*) from company
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+     
+    update company
+    <set >
+      <if test="record.companyId != null" >
+        company_id = #{record.companyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.companyName != null" >
+        company_name = #{record.companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyLogo != null" >
+        company_logo = #{record.companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyStage != null" >
+        company_stage = #{record.companyStage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyEmpCount != null" >
+        company_emp_count = #{record.companyEmpCount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyIndustury != null" >
+        company_industury = #{record.companyIndustury,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyDesc != null" >
+        company_desc = #{record.companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyWebsite != null" >
+        company_website = #{record.companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddrProvince != null" >
+        company_addr_province = #{record.companyAddrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddrCity != null" >
+        company_addr_city = #{record.companyAddrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAddrArea != null" >
+        company_addr_area = #{record.companyAddrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.companyAdrrDetail != null" >
+        company_adrr_detail = #{record.companyAdrrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.other1 != null" >
+        other1 = #{record.other1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.other2 != null" >
+        other2 = #{record.other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+     
+    update company
+    set company_id = #{record.companyId,jdbcType=INTEGER},
+      company_name = #{record.companyName,jdbcType=VARCHAR},
+      company_logo = #{record.companyLogo,jdbcType=VARCHAR},
+      company_stage = #{record.companyStage,jdbcType=VARCHAR},
+      company_emp_count = #{record.companyEmpCount,jdbcType=VARCHAR},
+      company_industury = #{record.companyIndustury,jdbcType=VARCHAR},
+      company_desc = #{record.companyDesc,jdbcType=VARCHAR},
+      company_website = #{record.companyWebsite,jdbcType=VARCHAR},
+      company_addr_province = #{record.companyAddrProvince,jdbcType=VARCHAR},
+      company_addr_city = #{record.companyAddrCity,jdbcType=VARCHAR},
+      company_addr_area = #{record.companyAddrArea,jdbcType=VARCHAR},
+      company_adrr_detail = #{record.companyAdrrDetail,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      other1 = #{record.other1,jdbcType=VARCHAR},
+      other2 = #{record.other2,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.it.pojo.Company" >
+     
+    update company
+    <set >
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="companyLogo != null" >
+        company_logo = #{companyLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyStage != null" >
+        company_stage = #{companyStage,jdbcType=VARCHAR},
+      </if>
+      <if test="companyEmpCount != null" >
+        company_emp_count = #{companyEmpCount,jdbcType=VARCHAR},
+      </if>
+      <if test="companyIndustury != null" >
+        company_industury = #{companyIndustury,jdbcType=VARCHAR},
+      </if>
+      <if test="companyDesc != null" >
+        company_desc = #{companyDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="companyWebsite != null" >
+        company_website = #{companyWebsite,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddrProvince != null" >
+        company_addr_province = #{companyAddrProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddrCity != null" >
+        company_addr_city = #{companyAddrCity,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAddrArea != null" >
+        company_addr_area = #{companyAddrArea,jdbcType=VARCHAR},
+      </if>
+      <if test="companyAdrrDetail != null" >
+        company_adrr_detail = #{companyAdrrDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null" >
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null" >
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.it.pojo.Company" >
+     
+    update company
+    set company_name = #{companyName,jdbcType=VARCHAR},
+      company_logo = #{companyLogo,jdbcType=VARCHAR},
+      company_stage = #{companyStage,jdbcType=VARCHAR},
+      company_emp_count = #{companyEmpCount,jdbcType=VARCHAR},
+      company_industury = #{companyIndustury,jdbcType=VARCHAR},
+      company_desc = #{companyDesc,jdbcType=VARCHAR},
+      company_website = #{companyWebsite,jdbcType=VARCHAR},
+      company_addr_province = #{companyAddrProvince,jdbcType=VARCHAR},
+      company_addr_city = #{companyAddrCity,jdbcType=VARCHAR},
+      company_addr_area = #{companyAddrArea,jdbcType=VARCHAR},
+      company_adrr_detail = #{companyAdrrDetail,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR}
+    where company_id = #{companyId,jdbcType=INTEGER}
+  </update>
+</mapper>
